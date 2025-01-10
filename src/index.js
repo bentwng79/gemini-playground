@@ -109,9 +109,9 @@ async function handleWebSocket(request, env) {
      if (targetWebSocket.readyState === WebSocket.OPEN) {
         try {
           targetWebSocket.send(event.data);
-          console.log('Successfully sent message to gemini');
+          console.log('Successfully sent message to Gemini');
         } catch (error) {
-          console.error('Error sending to gemini:', error);
+          console.error('Error sending to Gemini:', error);
         }
      } else {
        // 如果连接还未建立，将消息加入待处理队列
@@ -121,7 +121,7 @@ async function handleWebSocket(request, env) {
    });
  
    targetWebSocket.addEventListener("message", (event) => {
-     console.log('Received message from gemini:', {
+     console.log('Received message from Gemini:', {
      dataPreview: typeof event.data === 'string' ? event.data.slice(0, 200) : 'Binary data',
      dataType: typeof event.data,
      timestamp: new Date().toISOString()
